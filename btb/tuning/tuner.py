@@ -154,7 +154,7 @@ class Tuner(object):
             # generate a matrix of random parameters, column by column.
             candidates = np.zeros((n, len(self.optimizables)))
             for i, (k, struct) in enumerate(self.optimizables):
-                lo, hi = struct.range if not struct.is_categorical else None, None
+                lo, hi = struct.range
 
                 # TODO: move this to a HyperParameter class
                 if struct.is_categorical:
