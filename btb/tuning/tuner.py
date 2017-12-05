@@ -4,6 +4,7 @@ import math
 
 from btb import ParamTypes, EXP_TYPES
 
+#TODO:make categorical parameters work with the grid
 
 class Tuner(object):
     def __init__(self, optimizables, gridding=0, **kwargs):
