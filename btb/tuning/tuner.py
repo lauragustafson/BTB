@@ -155,7 +155,6 @@ class Tuner(object):
             #dtype of object allows for mixed double/string arrays
             candidates = np.zeros((n, len(self.optimizables)),dtype=object)
             for i, (k, struct) in enumerate(self.optimizables):
-                print("i", i, "k", k, "struct", struct)
                 lo, hi = struct.range if not struct.is_categorical else (None, None)
 
                 # TODO: move this to a HyperParameter class
