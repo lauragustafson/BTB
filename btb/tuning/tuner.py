@@ -176,8 +176,6 @@ class Tuner(object):
                     diff = math.log10(hi) - math.log10(lo)
                     floats = math.log10(lo) + diff * np.random.rand(n)
                     column = 10.0 ** floats
-                print("candidates", candidates)
-                print("column", column)
                 candidates[:, i] = column
                 i += 1
 
