@@ -1,4 +1,4 @@
-from btb.tuning import Tuner
+from tuning import Tuner
 
 
 class Uniform(Tuner):

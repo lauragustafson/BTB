@@ -152,13 +152,17 @@ class Tuner(object):
         # is chosen uniformly at random
         else:
             # generate a matrix of random parameters, column by column.
-            candidates = np.zeros((n, len(self.optimizables)))
+            #dtype of object allows for mixed double/string arrays
+            candidates = np.zeros((n, len(self.optimizables)),dtype=object)
             for i, (k, struct) in enumerate(self.optimizables):
-                lo, hi = struct.range
+                print("i", i, "k", k, "struct", struct)
+                lo, hi = struct.range if not struct.is_categorical else (None, None)
 
                 # TODO: move this to a HyperParameter class
                 if struct.is_categorical:
-                    column = np.random.choice(struct.range, size=n)
+                    idx = np.random.choice(len(struct.range), size=n)
+                    column = np.array(struct.range)[idx]
+                    #column = np.random.choice(struct.range, size=n)
                 elif struct.type == ParamTypes.INT:
                     column = np.random.randint(lo, hi + 1, size=n)
                 elif struct.type == ParamTypes.FLOAT:
@@ -172,7 +176,8 @@ class Tuner(object):
                     diff = math.log10(hi) - math.log10(lo)
                     floats = math.log10(lo) + diff * np.random.rand(n)
                     column = 10.0 ** floats
-
+                print("candidates", candidates)
+                print("column", column)
                 candidates[:, i] = column
                 i += 1
 
