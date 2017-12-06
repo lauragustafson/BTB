@@ -2,7 +2,7 @@ from __future__ import division
 import numpy as np
 from scipy.stats import norm
 
-from tuning import Tuner, Uniform
+from btb.tuning import Tuner, Uniform
 from sklearn.gaussian_process import GaussianProcess, GaussianProcessRegressor
 
 
