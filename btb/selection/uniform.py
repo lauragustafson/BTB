@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from btb.selection import Selector
 import random
 

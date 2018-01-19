@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from builtins import object, str as newstr
 from collections import namedtuple
 

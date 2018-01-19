@@ -1,3 +1,4 @@
+from __future__ import unicode_literals
 from builtins import object
 
 # Enum class for mapping symbols to string names
