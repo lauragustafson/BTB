@@ -25,14 +25,28 @@ class TestBaseRecommender(TestCase):
 
     def test_predict_all(self):
         indicies = np.array(range(4))
+        permutation = [3, 2, 1, 4]
         recommender = UniformRecommender(self.dpp_matrix_small)
-        predictions = recommender.predict(indicies)
-        permutations = list(itertools.permutations(indicies))
-        assert any((permutations[:] == predictions).all(1))
+        with patch(
+            'numpy.random.permutation',
+            return_value=permutation
+        ) as mock_random:
+            predictions = recommender.predict(indicies)
+        np.testing.assert_array_equal(
+            permutation,
+            predictions,
+        )
 
     def test_predict_one(self):
         indicies = np.array([0])
+        permutation = [1]
         recommender = UniformRecommender(self.dpp_matrix)
-        predictions = recommender.predict(indicies)
-        permutations = list(itertools.permutations(indicies))
-        assert any((permutations[:] == predictions).all(1))
+        with patch(
+            'numpy.random.permutation',
+            return_value=permutation
+        ) as mock_random:
+            predictions = recommender.predict(indicies)
+        np.testing.assert_array_equal(
+            permutation,
+            predictions,
+        )

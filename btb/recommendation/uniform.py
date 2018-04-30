@@ -35,10 +35,4 @@ class UniformRecommender(BaseRecommender):
         Returns:
             y: np.array of predicted scores, shape = (n_samples)
         """
-        y = np.random.permutation(indicies.shape[0])
-        #print("y", y)
-        ranks =  np.array(
-                    [1, 2, 3, 6, 7, 9, 5, 10, 15, 14, 13, 11, 4, 8, 12, 16]
-        )
-        #print("ranks", ranks)
-        return np.array(y)
+        return np.random.permutation(indicies.shape[0])
