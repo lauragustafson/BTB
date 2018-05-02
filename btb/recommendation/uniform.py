@@ -4,7 +4,7 @@ import numpy as np
 
 from btb.recommendation.recommender import BaseRecommender
 
-logger = logging.getLogger('btb')
+LOGGER = logging.getLogger('btb')
 
 
 class UniformRecommender(BaseRecommender):

@@ -87,7 +87,7 @@ class MFRecommender(BaseRecommender):
         max_agreement = -1  # min value of Kendall Tau agremment
         for i in range(self.dpp_ranked.shape[0]):
             # calculate agreement between current row and X
-            agreement, p_value = stats.kendalltau(
+            agreement, _ = stats.kendalltau(
                 dpp_vector_ranked,
                 self.dpp_ranked[i, :],
             )

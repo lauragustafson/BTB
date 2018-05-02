@@ -1,8 +1,6 @@
 import logging
 
 import numpy as np
-import scipy.stats as stats
-from sklearn.decomposition import NMF
 
 logger = logging.getLogger('btb')
 
