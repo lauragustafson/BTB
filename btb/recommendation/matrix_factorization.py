@@ -6,7 +6,7 @@ from sklearn.decomposition import NMF
 
 from btb.recommendation.recommender import BaseRecommender
 
-logger = logging.getLogger('btb')
+LOGGER = logging.getLogger('btb')
 
 
 class MFRecommender(BaseRecommender):
