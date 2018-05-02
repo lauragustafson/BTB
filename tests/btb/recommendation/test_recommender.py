@@ -25,7 +25,6 @@ class TestBaseRecommender(TestCase):
         assert recommender.dpp_vector.shape[0] == self.dpp_matrix.shape[1]
 
     def test_fit(self):
-        n_components = 3
         X = np.array([0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
         # Run
         recommender = BaseRecommender(self.dpp_matrix)
