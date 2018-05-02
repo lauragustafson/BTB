@@ -23,29 +23,25 @@ class TestBaseRecommender(TestCase):
             [0, 2, 3, 0]
         ])
 
-    def test_predict_all(self):
+    @patch('btb.recommendation.uniform.np.random.permutation')
+    def test_predict_all(self, randpermutation_mock):
         indicies = np.array(range(4))
         permutation = [3, 2, 1, 4]
+        randpermutation_mock.return_value = permutation
         recommender = UniformRecommender(self.dpp_matrix_small)
-        with patch(
-            'numpy.random.permutation',
-            return_value=permutation
-        ) as mock_random:
-            predictions = recommender.predict(indicies)
+        predictions = recommender.predict(indicies)
         np.testing.assert_array_equal(
             permutation,
             predictions,
         )
 
-    def test_predict_one(self):
+    @patch('btb.recommendation.uniform.np.random.permutation')
+    def test_predict_one(self, randpermutation_mock):
         indicies = np.array([0])
         permutation = [1]
+        randpermutation_mock.return_value = permutation
         recommender = UniformRecommender(self.dpp_matrix)
-        with patch(
-            'numpy.random.permutation',
-            return_value=permutation
-        ) as mock_random:
-            predictions = recommender.predict(indicies)
+        predictions = recommender.predict(indicies)
         np.testing.assert_array_equal(
             permutation,
             predictions,
